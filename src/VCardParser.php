@@ -301,6 +301,9 @@ class VCardParser implements Iterator
 
     protected function parseBirthday($value)
     {
+        if(strlen($value) < 10) {
+          $value = str_replace('--', date('Y').'-', $value);
+        }
         return new \DateTime($value);
     }
 
